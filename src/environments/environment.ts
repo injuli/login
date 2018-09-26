@@ -8,12 +8,12 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyBDSAWsyKclfmtXhL0ZsfoOL8x19rRz70Y',
-    authDomain: 'login-93a1c.firebaseapp.com',
-    databaseURL: 'https://login-93a1c.firebaseio.com',
-    projectId: 'login-93a1c',
-    storageBucket: 'login-93a1c.appspot.com',
-    messagingSenderId: '1067645973055'
+    apiKey: 'AIzaSyC8J8lMR_ivterIM3tu1LYcurVEPYf-Bgo',
+    authDomain: 'login-angular-d87c1.firebaseapp.com',
+    databaseURL: 'https://login-angular-d87c1.firebaseio.com',
+    projectId: 'login-angular-d87c1',
+    storageBucket: 'login-angular-d87c1.appspot.com',
+    messagingSenderId: '135115386118'
   }
 };
 /*

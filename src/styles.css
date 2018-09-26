@@ -1,3 +1,4 @@
 @import "assets/css/base.css";
 @import "assets/css/vendor.css";
 @import "assets/css/main.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
