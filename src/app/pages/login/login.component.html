@@ -35,7 +35,7 @@
               </div>
               <div class="form-field">
                   <button (click)="addUser()" class="full-width btn--primary">Submit</button>
-                  <button (click)="listUser()" class="full-width btn--primary">Listar</button>
+                  <button [routerLink]="'/table'" class="full-width btn--primary">Listar</button>
                   <div class="submit-loader">
                       <div class="text-loader">Sending...</div>
                       <div class="s-loader">

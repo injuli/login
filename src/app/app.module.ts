@@ -17,7 +17,12 @@ import { PhotoswipeComponent } from './pages/photoswipe/photoswipe.component';
 import { FormsModule} from '@angular/forms';
 import { TableComponent } from './pages/table/table.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ListarInfoService } from './services/listar-info.service';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
 
+import { AppRoutingModule } from './app-routing.module';
+import { PrincipalComponent } from './pages/principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +37,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     LoginComponent,
     PhotoswipeComponent,
     TableComponent,
+    PrincipalComponent,
   ],
   imports: [
+    MatTableModule,
+    AppRoutingModule,
+    MatPaginatorModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -41,7 +50,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence()
   ],
-  providers: [],
+  providers: [
+    ListarInfoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

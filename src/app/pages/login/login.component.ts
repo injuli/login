@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import { AuthService } from './core/auth.service';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import { Usuario } from '../../interfaces/usuario.interface';
 
 
