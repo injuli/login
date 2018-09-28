@@ -4,6 +4,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Listar } from '../../interfaces/listar.interface';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import { map } from 'rxjs-compat/operator/map';
 
 @Component({
   selector: 'app-table',
@@ -12,10 +13,16 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class TableComponent implements OnInit {
 
+  id;
   nombre;
   correo;
+  asunto;
+  mensaje;
+
+
   listarDoc: AngularFirestoreDocument<Listar>;
-  constructor( private afs: AngularFirestore) { }
+  constructor( private afs: AngularFirestore,
+              private usuerService: ListarInfoService) { }
 
   displayedColumns: string[] = ['nombre', 'correo'];
   dataSource = new MatTableDataSource;
@@ -26,17 +33,49 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     this.listarDoc = this.afs.doc('usuarios/0zNh9emudI3vf9jXEtLVs');
     this.dataSource.paginator = this.paginator;
-    this.consultar().subscribe ( resp => {
-      this.dataSource.data = resp;
-      console.log(resp);
+    this.consultar().subscribe ( data => {
+      this.dataSource.data = data;
+      console.log(data);
     });
   }
 
-  consultar() {
-    return this.afs.collection('usuarios').valueChanges();
-  }
-  editar(){
 
+  cambiardatos(row) {
+    this.nombre = row.nombre;
+    this.correo = row.correo;
+    this.asunto = row.asunto;
+    this.mensaje = row.mensaje;
+    this.id = row.id;
+  }
+
+
+  consultar() {
+    return this.usuerService.consultar();
+  }
+
+  editarUsuario() {
+    const usuario = {
+      nombre: this.nombre,
+      correo: this.correo,
+      asunto: this.asunto,
+      mensaje: this.mensaje
+
+    };
+    console.log(usuario);
+    this.afs.doc( 'usuarios/' + this.id   ).set(usuario);
+
+  }
+
+  eliminarUsuario() {
+    const usuario = {
+      nombre: this.nombre,
+      correo: this.correo,
+      asunto: this.asunto,
+      mensaje: this.mensaje
+
+    };
+    console.log(usuario);
+    this.afs.doc( 'usuarios/' + this.id   ).remove(usuario);
   }
 
 }

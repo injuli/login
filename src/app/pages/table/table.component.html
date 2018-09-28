@@ -16,15 +16,15 @@ example-header">
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr (click)="cambiardatos(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 <br>
-<div class="">
+<!-- <div class="">
   <form action="">
-    <label for="fname">First Name</label>
+    <label for="fname">Modificar</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
     <label for="lname">Last Name</label>
@@ -40,8 +40,31 @@ example-header">
     <input type="submit" value="Modificar">
     <input type="submit" value="Eliminar">
   </form>
-</div>
+</div> -->
 
+<div class="container">
+    <form action="/action_page.php">
+      <label for="fname">Modificar</label>
+      <br>
+
+      <label for="fname">Nombre</label>
+      <input [(ngModel)]="nombre" type="text" id="nombre" name="nombre">
+
+      <label for="fname">Correo</label>
+      <input [(ngModel)]="correo" type="text" id="correo" name="correo">
+
+      <label for="fname">Asunto</label>
+      <input [(ngModel)]="asunto" type="text" id="asunto" name="asunto">
+
+      <label for="fname">Mensaje</label>
+      <input [(ngModel)]="mensaje" type="text" id="mensaje" name="mensaje">
+
+      <div class="row">
+        <input (click)="eliminarUsuario()" type="submit" value="Eliminar">
+        <input (click)="editarUsuario()" type="submit" value="Modificar">
+      </div>
+    </form>
+  </div>
 
 
 
