@@ -14,7 +14,7 @@ import { WorksComponent } from './pages/works/works.component';
 import { ClientsComponent } from './pages/clientes/clients.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PhotoswipeComponent } from './pages/photoswipe/photoswipe.component';
-import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { TableComponent } from './pages/table/table.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ListarInfoService } from './services/listar-info.service';
@@ -23,7 +23,7 @@ import { MatPaginatorModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { PrincipalComponent } from './pages/principal/principal.component';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,11 +41,13 @@ import { PrincipalComponent } from './pages/principal/principal.component';
   ],
   imports: [
     MatTableModule,
+    MatFormFieldModule,
     AppRoutingModule,
     MatPaginatorModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence()
