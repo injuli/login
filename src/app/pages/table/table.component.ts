@@ -75,7 +75,7 @@ export class TableComponent implements OnInit {
 
     };
     console.log(usuario);
-    this.afs.doc( 'usuarios/' + this.id   ).remove(usuario);
+    this.afs.doc( 'usuarios/' + this.id   ).delete();
   }
 
 }
