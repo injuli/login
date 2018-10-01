@@ -24,6 +24,7 @@ import { MatPaginatorModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AngularFireAuth } from '@angular/fire/auth';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AngularFirestoreModule.enablePersistence()
   ],
   providers: [
-    ListarInfoService
+    ListarInfoService,
+    AngularFireAuth
   ],
   bootstrap: [AppComponent]
 })

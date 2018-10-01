@@ -4,6 +4,8 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Usuario } from '../../interfaces/usuario.interface';
+import { ListarInfoService } from '../../services/listar-info.service';
+import { Router } from '@angular/router';
 
 
 
@@ -20,10 +22,13 @@ export class LoginComponent implements OnInit {
    correo;
    asunto;
    mensaje;
+   nombreLogin;
 
   usuarioDoc: AngularFirestoreDocument<Usuario>;
 
-  constructor( private afs: AngularFirestore) { }
+  constructor( private afs: AngularFirestore,
+              private iniciar: ListarInfoService,
+              private router: Router ) { }
 
   ngOnInit() {
     this.usuarioDoc = this.afs.doc('usuarios/0zNh9emudI3vf9jXEtLVs');
@@ -49,9 +54,16 @@ export class LoginComponent implements OnInit {
 
   }
 
+
   listUser() {
 
     return this.afs.collection( 'usuarios'  ).valueChanges();
+  }
+
+  ingresar() {
+    this.iniciar.login().then(() => {
+      this.router.navigate(['/table']);
+    });
 
   }
 
